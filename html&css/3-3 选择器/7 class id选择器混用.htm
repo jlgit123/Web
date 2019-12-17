@@ -1,0 +1,38 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <style type="text/css"> 
+
+      .one{font-size:18px;
+      }
+      .two{font-size:24px;
+      }
+      .red{
+        color: red;
+      }
+      .yellow{
+        color: yellow;
+      }
+      .left{
+        text-align: left;
+      }
+      .right{
+        text-align: right;
+      }
+      #my{
+        background-color: #ccc;
+      }
+    </style>
+</head>
+<body>
+    <!-- 多个class选择器混用，用空格分开 -->
+    <p class="one red right">这里的文字，18px红色，右对齐</p>
+    <div class="one yellow left">这里的文字，18px黄色，左对齐</div>
+    
+    <!-- id和class混用 -->
+    <div id="my" class="one yellow left" >这里的文字，18px黄色，左对齐，有背景色</div>
+</body>
+</html>

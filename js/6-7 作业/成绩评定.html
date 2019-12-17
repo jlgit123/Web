@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>成绩输入与计算</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var inpt,score,sum=0,aver,fail=0;
+			var arr = new Array();
+
+			// 提示输入七位同学的成绩
+			for (var i = 0; i < 7; i++) {
+				inpt = prompt("请输入第"+(i+1)+"位同学的成绩");
+				score = Number(inpt);
+				arr[i] = score;
+			}
+			// 计算总分和不及格人数	
+			for (var j = 0; j < arr.length; j++) {
+				sum+=arr[j];
+				if (arr[j]<60) {
+					fail+=1;
+				}
+			}
+
+      	// 计算平均分，四舍五入保留两位小数
+			aver = (sum/arr.length).toFixed(2);
+
+
+			alert("这七位同学总分为"+sum);
+			alert("这七位同学平均分为"+aver);
+			alert("这七位同学中不及格人数为"+fail);
+
+
+			// 输出
+			document.write("<p>这"+i+"位同学总分："+sum+"</p>");
+			document.write("<p>这"+i+"位同学平均分："+aver+"</p>");
+			document.write("<p>这"+i+"位同学中成绩不及格的有："+fail+"位</p>");
+
+
+		</script>
+	</body>
+</html>

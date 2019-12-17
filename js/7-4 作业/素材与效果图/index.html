@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>电影和综艺</title>
+	<meta charset="utf-8"/>
+	<style>
+	ul {
+		width: 150px;
+	}
+
+	ul li ol li{
+		background-repeat: no-repeat;
+		/*padding-right: 150px;*/
+		background-position: right ;
+	}
+
+
+	p{
+		background-repeat: no-repeat;
+
+	}
+
+</style>
+
+</head>
+<body>
+	<ul>
+		<li>电影
+			<ol>
+				<li>爵迹</li>
+				<li>星际迷航</li>
+				<li>湄公河</li>
+			</ol>
+		</li>
+		<li>综艺
+			<ol>
+				<li>跑男</li>
+			</ol>
+		</li>
+
+		<li class='dm'>动漫
+			<br />
+		</li>
+	</ul>
+	<!-- 引入jquery -->
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+
+		$("ol").children("li").first().css("background-image", "url(img/fire.jpg)");
+        // 选择所有ol下第一个li，设置其背景图片为fire.jpg
+        $("ol").children("li").eq(2).css("background-image", "url(img/snow.jpg)");
+		//选择作为ol下唯一的一个li，设置其背景图片为only.jpg
+
+		$("ol li:only-child").css("background-image", "url(img/only.jpg)");
+
+		var $ol = $("<img src='img/empty.png'> </img>");
+		var $parent = $(".dm");
+		$parent.append($ol);
+
+
+	</script>
+
+</body>
+</html

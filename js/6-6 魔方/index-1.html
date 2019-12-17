@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>魔方</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+		  width: 100%;
+		  height: 100%;
+		  background: radial-gradient(#fff, red); 
+		}
+		.container{
+			width:300px;
+			height:300px;
+			margin:200px auto;
+			/*立体效果*/
+			perspective:20000px;   
+		}
+		.box{
+			width:300px;
+			height:300px;
+			border:1px solid transparent;
+			box-sizing: border-box;
+			position:relative;
+			/*默认2D转换，需更改为3D*/
+			transform-style:preserve-3d;
+
+			/*测试代码*/
+			/*transform:rotateX(30deg) rotateY(30deg);*/
+			animation: rotate 10s linear infinite;
+		}
+
+		/*盒子(大魔方)转*/
+		@keyframes rotate{
+			100%{
+				transform:rotatex(360deg) rotatey(360deg) rotatez(360deg);
+			}
+		}
+
+		.box-page{
+			width: 300px;
+			height: 300px;
+			position:absolute;
+			box-sizing: border-box;
+			/*控制子元素保持3D转换*/
+			transform-style:preserve-3d;   
+		}
+
+        /*每个面作为立体图*/
+		.top{
+			transform: translateZ(150px);
+		}
+		.bottom{
+			transform: translateZ(-150px) rotateX(180deg);
+		}
+		.right{
+			transform: translateX(150px) rotateY(90deg);
+		}
+		.left{
+			transform: translateX(-150px) rotateY(-90deg);
+		}
+		.after{
+			transform: translateY(-150px) rotateX(90deg);
+		}
+		.before{
+			transform: translateY(150px) rotateX(-90deg);
+		}
+
+        /*选择每个面的第n个方块*/
+		.box-page div:nth-child(1){
+		    animation: a1 6s ease-in;
+		}
+		.box-page div:nth-child(2){
+		    animation: a1 6s ease-in 0.5s;
+		}
+		.box-page div:nth-child(3){
+		    animation: a1 6s ease-in 1s;
+		}
+		.box-page div:nth-child(4){
+		    animation: a1 6s ease-in 1.5s;
+		}
+		.box-page div:nth-child(5){
+		    animation: a1 6s ease-in 2s;
+		}
+		.box-page div:nth-child(6){
+		    animation: a1 6s ease-in 2.5s;
+		}
+		.box-page div:nth-child(7){
+		    animation: a1 6s ease-in 3s;
+		}
+		.box-page div:nth-child(8){
+		    animation: a1 6s ease-in 3.5s;
+		}
+		.box-page div:nth-child(9){
+		    animation: a1 6s ease-in 4s;
+		}
+
+
+		@keyframes a1{
+			0%{
+				transform: translateZ(0px) scale(1) rotateZ(0deg);
+			}
+			20%{
+				transform: translateZ(300px) scale(0) rotateZ(720deg);
+			}
+			90%{
+				transform: translateZ(300px) scale(0) rotateZ(720deg);
+			}
+			100%{
+				transform: translateZ(0px) scale(1) rotateZ(0deg);
+			}
+		}
+
+		.box-page div:nth-child(2),.box-page div:nth-child(4),.box-page div:nth-child(6),.box-page div:nth-child(8){
+			transform:rotateX(0deg);
+		    animation: rotatex 6s linear infinite;
+		}
+
+
+		
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="box">
+		<div class="top box-page"></div>
+		<div class="bottom box-page"></div>
+		<div class="left box-page"></div>
+		<div class="right box-page"></div>
+		<div class="before box-page"></div>
+		<div class="after box-page"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	
+	// DOM通过CSS选择器查找
+	var arr = document.querySelectorAll(".box>div");
+	// 边里6个面中的每个面
+	for(var n = 0;n<arr.length;n++){
+		// 外层循环遍历行
+		for(var i=0;i<3;i++){
+			// 内层循环遍历列
+			for(var j=0;j<3;j++){
+				// 创建元素
+				var divs = document.createElement("div");
+				// 不让边框宽度影响设置的图片宽度的特殊处理-->  box-sizing:border-box
+				// position:absolute  使得图片叠加到相同位置（左上角）而非并排排列
+				divs.style.cssText = "width:100px;height:100px;border: 1px solid #fff;position:absolute;box-sizing:border-box;background-image:url(img/a"+n+".jpg);background-size: 300px 300px;";
+				// 新加的元素加到每个面上
+				arr[n].appendChild(divs);
+
+				// 改变每一个div的位置，使图片显示为九个小方块
+				divs.style.left = 100*j+"px";
+				divs.style.top = 100*i+"px";
+
+				// 改变背景图相应的位置，使九个方块分别对应其特定的位置而非都是左上角  X方向对应列数  Y方向对应行数
+				divs.style.backgroundPositionX = -j*100+"px";  
+				divs.style.backgroundPositionY = -i*100+"px";		
+			}
+		}
+	}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>闰年判断</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+				do{
+					var input=prompt("请输入一个年份:");
+					var year=Number(input);
+
+					
+					if(isNaN(year)){
+						alert("输入有误，程序退出!");
+					}else if( (year%4==0 && year%100!=0) || year%400==0 ){
+						alert(year + "年是闰年么？是的。");
+					}else{
+						alert(year + "年是闰年么？不是。");
+					}
+				}while(!isNaN(year));
+				alert("程序结束!!!");
+				
+		</script>
+	</body>
+</html>
