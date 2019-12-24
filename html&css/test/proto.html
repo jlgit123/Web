@@ -28,7 +28,7 @@
         }
         var o5 = new M('o5');
 
-        // new运算符
+        // new运算符原理
         var new2=function(func){
             var o=Object.create(func.prototype);  //创建空对象，关联构造函数的原型对象
             var k=func.call(o); //转移上下文，把上下文转移为o对象
