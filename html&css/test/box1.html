@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CSS盒模型</title>
+    <title>CSS盒模型边距重叠问题</title>
     <style media="screen">
         html *{
             margin: 0;
@@ -13,12 +13,11 @@
     </style>
 </head>
 <body>
-    <!-- BFC解决父子元素边距重叠的问题  -->
     <section id="sec">
         <style media="screen">
             #sec{
                 background-color: #f00;
-                overflow: hidden;
+                /* overflow: hidden; */
             }
             .child{
                 height: 100px;
@@ -29,7 +28,7 @@
         <article class="child"></article>
     </section> 
     
-    <!-- BFC解决兄弟元素边距重叠的问题  -->
+    <!-- BFC垂直方向边距重叠  -->
     <section id="margin">
         <style>
         #margin{
@@ -40,16 +39,12 @@
             margin: 5px auto 25px;
             background-color: red;
         }
-        .new{
-            margin: 5px auto 25px;
-            background-color: red;
-        }
         </style>
         <p>1</p>
         <!-- 解决垂直方向边距重叠，增加父元素并设置overflow属性为hidden -->
-        <div style="overflow:hidden">    
-            <p class="new">2</p>
-        </div>
+        <!-- <div style="overflow:hidden">     -->
+            <p>2</p>
+        <!-- </div> -->
         <p>3</p>
     </section>
 
@@ -68,7 +63,7 @@
             #layout .right{
                 height: 110px;
                 background-color: #ccc;
-                overflow: auto;  /* 创建BFC ，利用BFC元素不与float元素内容重叠 */
+                /* overflow: auto;  创建BFC ，利用BFC元素不与float元素内容重叠 */
             }
         </style>
         <div class="left"></div>
@@ -80,7 +75,7 @@
         <style>
             #float{
                 background-color: purple;
-                overflow:auto;  /* 设置BFC清除浮动 */
+                /* overflow:auto;  设置BFC清除浮动 */
                 /* float:left; */
             }
             #float .float{

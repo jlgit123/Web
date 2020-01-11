@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>    
+    <title>页面布局</title>    
 
     <style media="screen">
         html *{
@@ -17,7 +17,6 @@
             min-height:100px;
         }
     </style>
-
 </head>
 <body>
     <!-- float解决方案 -->
@@ -42,7 +41,7 @@
             <div class="right"></div>
             <div class="center">
                 <h1>浮动解决方案</h1>
-                1.这是三栏布局浮动档案中间部分
+                1.这是三栏布局浮动方案中间部分
                 <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加高度</p>
@@ -77,9 +76,7 @@
             <div class="left"></div>
             <div class="center">
                 <h2>绝对定位解决方案</h2>
-                1.这是三栏布局绝对定位方案中间部分
-                <p>增加高度</p>
-                <p>增加高度</p>
+                2.这是三栏布局绝对定位方案中间部分
                 <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加高度</p>
@@ -117,7 +114,7 @@
             <div class="left"></div>
             <div class="center">
                 <h2>flexbox解决方案</h2>
-                1.这是三栏布局flexbox方案中间部分
+                3.这是三栏布局flexbox方案中间部分
                 <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加高度</p>
@@ -155,7 +152,7 @@
             <div class="left"></div>
             <div class="center">
                 <h2>表格布局解决方案</h2>
-                1.这是表格布局方案中间部分
+                4.这是表格布局方案中间部分
                 <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加高度</p>
@@ -191,7 +188,9 @@
             <div class="left"></div>
             <div class="center">
                 <h2>网格布局解决方案</h2>
-                1.这是三栏布局网格布局解决方案
+                5.这是三栏布局网格布局解决方案
+                <p>增加高度</p>
+                <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加会溢出</p>
 
@@ -203,6 +202,9 @@
     <!-- 圣杯布局解决方案 -->
     <section class="layout shengbei">
         <style>
+            .layout.shengbei{
+                min-width: 900px;
+            }
             .layout.shengbei .left-center-right{
                 padding:0px 300px 0px 300px;
             }
@@ -211,9 +213,10 @@
                 float: left;
                 position: relative;
             }
+            /*左边栏*/
             .layout.shengbei .left{
                 left: -300px;
-                width: 300px;
+                width: 300px;  
                 margin-left: -100%;
                 background-color:red;
             }
@@ -229,26 +232,28 @@
                 margin-left: -300px;
                 background-color: #ff69b4;
             }
-        
         </style>
         <article class="left-center-right">
-            <div class="left"></div>
             <div class="center">
                 <h2>圣杯布局解决方案</h2>
-                1.这是三栏布局圣杯布局解决方案
-                <p>增加高度</p>
+                6.这是三栏布局圣杯布局解决方案
                 <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加高度</p>
                 <p>增加高度</p>
             </div>
+            <div class="left"></div>
             <div class="right"></div> 
         </article>
     </section>
     <!-- 双飞翼布局解决方案 -->
     <section class="layout shuangfeiyi">
         <style>
+            /* 与前一个布局保持距离 */
+            .layout.layout.shuangfeiyi{
+                margin-top: 200px;
+            }
             /* 把left和right定位到左右部分 */
             .layout.shuangfeiyi .left-center-right>div{
                 float: left;
@@ -277,13 +282,11 @@
             }
         
         </style>
-        
         <article class="left-center-right">
-            <div class="left"></div>
             <div class="center">
                 <div class="content">
                     <h2>双飞翼布局解决方案</h2>
-                    1.这是三栏布局双飞翼布局解决方案
+                    7.这是三栏布局双飞翼布局解决方案
                     <p>增加高度</p>
                     <p>增加高度</p>
                     <p>增加高度</p>
@@ -292,6 +295,7 @@
                     <p>增加高度</p>
                 </div>
             </div>
+            <div class="left"></div>
             <div class="right"></div> 
         </article>
     </section>
