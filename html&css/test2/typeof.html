@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    var a = 100;
+    var b = a;
+    console.log(a); //100
+    console.log(b); //100
+
+    a = 200;
+    console.log(b); //100
+
+    var c = b;
+    console.log(c); //100
+    b = 300;
+    console.log(c); //100
+    //以上体现值类型的特点，不会因为赋值而相互干预
+
+
+    var a = {age:20};
+    var b = a;
+    console.log(b);  //20
+    console.log(a);
+
+    b.age = 21;
+    console.log(b);
+    console.log(a);  //21
+
+    var c = b;
+    c.age = 22;
+    console.log(c);  //22
+    console.log(b);
+    console.log(a);
+    //以上体现引用类型的特点，内存中通过指针指向真实对象，不会拷贝复制具体的值
+
+    a.name = 'Bob';
+    a.bb = true;
+    a.cc = 10000;
+    console.log(a);  //{age: 22, name: "Bob", bb: true, cc: 10000}
+    //Object对象作为引用类型，可以扩大属性
+
+    var arr = [1,2,3];
+    arr.age = 21;
+    console.log(arr); //(3) [1, 2, 3, age: 21]
+    var arr2 = arr;
+    arr2.age = 22;
+    console.log(arr2); //(3) [1, 2, 3, age: 22]
+    console.log(arr); //(3) [1, 2, 3, age: 22]
+    //数组作为引用类型
+
+    function fn(){};
+    console.log(fn); //ƒ fn(){}
+    fn.age = 21;
+    var fn1 = fn;
+    console.log(fn1.age); //21
+    fn1.age = 22;
+    console.log(fn.age); //22
+    console.log(fn1.age); //22
+    //函数作为引用类型
+
+    console.log(typeof 10); //number
+    console.log(typeof '20'); //string
+    console.log(typeof true); //boolean
+    console.log(typeof {a:1}); //object
+    console.log(typeof fn);  //function
+    console.log(typeof null);  //object
+    //typeof可以区分值类型，不可区分引用类型（函数除外），null也是object
+
+    console.log(100+10);  //110
+    console.log(100+'10');  //10010
+    //字符串拼接导致强制类型转换
+
+    console.log(100 == '100');  //true
+    console.log(100 === '100');  //false
+    console.log('' == 0);  //true
+    console.log('' === 0);  //false
+    console.log(null == undefined);  //true
+    console.log(null === undefined);  //false
+    //==运算符导致强制类型转换  
+
+    if (100) {console.log(101)};  //100->true
+    if ('') {console.log(102)};  //''->false
+    //if语句的强制类型转换
+
+    console.log(10 && 0);
+    console.log('' || 'abc');
+    //逻辑运算符的强制类型转换
+
+    var a = 100;
+    console.log(!!a); //true
+    var b = '';
+    console.log(!!b); //false
+    //双非符号！！判断强制转换的类型
+
+    console.log(!!0); //false
+    console.log(!!NaN); //false
+    console.log(!!''); //false
+    console.log(!!null); //false
+    console.log(!!undefined); //false
+    console.log(!!false); //false
+    //false的需要记住
+
+    console.log(Object);  //内置函数
+    console.log(Array);  //内置函数
+    console.log(Function);  //内置函数
+    console.log(Math);  //内置对象
+    console.log(JSON);  //内置对象
+
+    var obj = {};
+    if (obj.a == null); //判断一个对象的属性是否存在用双等
+    function x(a,b) {if (a == null){}};//判断一个函数的参数是否存在用双等
+    //==的使用场景，注意该参数或者属性必须是已经定义了的
+
+    </script>
+    
+</body>
+</html>
