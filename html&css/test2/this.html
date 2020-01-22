@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function Foo(name){
+            //this = {} 
+            this.name = name
+            //return this
+        }
+        var f = new Foo('zhangsan')
+        //以上是构造函数中的this ,this首先被赋值为空对象，然后this.name，最后返回this
+
+         var obj = {
+             name :'A',
+             printName: function(){
+                 console.log(this.name)
+             }
+         }
+         obj.printName();  //A
+         //作为对象属性来执行，this === obj
+
+         function fn(){
+             console.log(this)
+         }
+         fn();  //Window
+         //作为普通函数来执行，this === window
+
+         function fn1(name){
+             alert(name)
+             console.log(this)
+         }
+         fn1.call({x:100},'zhangsan')  //Object
+         //call方法，fn1在执行过程中，()里的第一个参数用来做this，第二个以后的参数传入函数参数
+
+         function fn2(name,age){
+             alert(name)
+             console.log(this)
+         }
+         fn2.apply({y:100},['zhangsan',19])  //Object
+         //apply方法，fn2在执行过程中，()里的第一个参数用来做this，第二个数组参数传参到函数
+
+         var fn3 =function (name,age){
+             alert(name)
+             console.log(this)
+         }.bind({z:100})  //注意".bind"方法必须用在函数表达式后面，而不能是函数声明  
+         fn3('zhangsan',20)//如果没有.bind，this依旧是window
+         //bind方法，fn2在执行过程中，()里的第一个参数用来做this，第二个数组参数传参到函数
+        
+
+    </script>
+</body>
+</html>
