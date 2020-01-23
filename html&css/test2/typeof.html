@@ -22,7 +22,6 @@
     console.log(c); //100
     //以上体现值类型的特点，不会因为赋值而相互干预
 
-
     var a = {age:20};
     var b = a;
     console.log(b);  //20
@@ -38,6 +37,7 @@
     console.log(b);
     console.log(a);
     //以上体现引用类型的特点，内存中通过指针指向真实对象，不会拷贝复制具体的值
+    /*----------------------------------------------*/
 
     a.name = 'Bob';
     a.bb = true;
@@ -63,6 +63,7 @@
     console.log(fn.age); //22
     console.log(fn1.age); //22
     //函数作为引用类型
+    /*----------------------------------------------*/ 
 
     console.log(typeof 10); //number
     console.log(typeof '20'); //string
@@ -71,6 +72,7 @@
     console.log(typeof fn);  //function
     console.log(typeof null);  //object
     //typeof可以区分值类型，不可区分引用类型（函数除外），null也是object
+    /*----------------------------------------------*/
 
     console.log(100+10);  //110
     console.log(100+'10');  //10010
@@ -97,6 +99,7 @@
     var b = '';
     console.log(!!b); //false
     //双非符号！！判断强制转换的类型
+    /*----------------------------------------------*/
 
     console.log(!!0); //false
     console.log(!!NaN); //false
@@ -105,6 +108,7 @@
     console.log(!!undefined); //false
     console.log(!!false); //false
     //false的需要记住
+    /*----------------------------------------------*/
 
     console.log(Object);  //内置函数
     console.log(Array);  //内置函数
@@ -112,6 +116,7 @@
     console.log(Math);  //内置对象
     console.log(JSON);  //内置对象
 
+    /*----------------------------------------------*/
     var obj = {};
     if (obj.a == null); //判断一个对象的属性是否存在用双等
     function x(a,b) {if (a == null){}};//判断一个函数的参数是否存在用双等
