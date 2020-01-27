@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //写一个能遍历对象和数组的通用forEach函数
+    function forEach(obj, fn){
+        var key 
+        if (obj instanceof Array){  //数组
+            obj.forEach(function(item,index){  //注意格式
+                fn(index,item)
+            })
+        }else {   //对象
+            for (key in obj){
+                if (obj.hasOwnProperty){
+                    fn(key,obj[key])
+                }
+            }
+        }
+
+    }
+    var arr = [1,2,3]
+    forEach(arr, function(index,item){  //索引和值（同一格式）
+        console.log(index,item)
+    })
+
+    var obj = {x:100,y:200}
+    forEach(obj, function(key,val){  //属性和值（同一格式）
+        console.log(key,val)
+    })
+    </script>
+</body>
+</html>
