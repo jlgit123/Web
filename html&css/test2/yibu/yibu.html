@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id='btn1'>test</button>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script type="text/javascript">
+
+    // console.log(100)
+    // setTimeout(function(){
+    //     console.log(200)
+    // },1000) //异步
+    // console.log(300)   
+    //以上是异步的过程，没有阻塞，输出顺序：100 300 200
+
+    // console.log(100)
+    // alert(200)//同步
+    // console.log(300)
+    //以上是同步的过程，存在阻塞，首先打印100，200弹出点击确定后才打印300  
+    //以上就是同步和异步的区别：是否阻塞后续程序的运行
+    /*----------------------------------------------*/
+    //异步场景一↑ setTimeout等待执行，定时任务
+
+    console.log('start')
+    $.get('http://1.shiquanshimei.applinzi.com/test/new.php',function(data){
+        console.log(data)
+    })
+    console.log('end')
+    //异步场景二：ajax请求代码示例
+
+    console.log('start')
+    var img = document.createElement('img')
+    img.onload =function(){
+        console.log('loaded')
+    }
+    img.src='http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg'
+    console.log('end')
+    //异步场景三：<img>加载示例
+
+    
+    console.log('start')
+    var btn1 = document.getElementById('btn1')
+    btn1.addEventListener('click',function(){
+        console.log('clicked')
+    })
+    console.log('end')
+    //异步场景四：事件绑定示例
+
+
+    
+    </script>
+</body>
+</html>
