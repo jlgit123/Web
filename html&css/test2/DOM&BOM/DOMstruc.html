@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <div id="div1" class="class-div1">
+            <p id="p1" data-name="p1-data-name">this is p1</p>
+            <!-- 这里有空的文本text，删除所有间隙则没有 -->
+            <p id="p2">this is p2</p>
+        </div>
+        <div id="div2">
+            <p id="p3">this is p3</p>
+            <p id="p4">this is p4</p>
+        </div>
+
+        <script type = "text/javascript">
+            var p = document.createElement('p') //新建一个元素
+            p.innerHTML = 'new p' //注意写法
+            var div1 = document.getElementById('div1')
+            div1.appendChild(p)  //移动而非新增
+            console.log('新增new p，并作为div1的子元素')
+
+            var p4 = document.getElementById('p4')
+            div1.appendChild(p4)  //移动而非新增 p4挪到p3前面了
+            console.log('把p4作为div1的子元素，p4是已有元素，移动不新增')
+            //新增节点
+            /*----------------------------------------------*/
+
+            console.log('p4的父元素',p4.parentElement)
+            console.log('div1的父元素',div1.parentElement)
+            //获取父元素
+            /*----------------------------------------------*/
+
+            console.log('div1的子元素',div1.childNodes)
+            console.log('div1的子元素[0]',div1.childNodes[0].nodeType) //text  3
+            console.log('div1的子元素[1]',div1.childNodes[1].nodeType) //p     1
+            console.log('div1的子元素[0]',div1.childNodes[0].nodeName) //text  #text
+            console.log('div1的子元素[1]',div1.childNodes[1].nodeName) //p     P
+            //获取子元素
+            /*----------------------------------------------*/
+            
+            // var childNodes = div1.childNodes
+            // div1.removeChild(childNodes[1])
+            //删除节点
+
+
+        </script>
+    
+</body>
+</html>
