@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">激活</p>
+        <p id="p2">取消</p>
+    </div>
+    <div id="div2">
+        <p id="p3">取消</p>
+        <p id="p4">取消</p>
+        <a href="http://imooc.com" id="link1">imooc.com</a>
+    </div>
+
+    <script type="text/javascript">
+        console.log('点激活，点链接，点最后一个取消都分别打印对应内容')
+        var p1 = document.getElementById('p1')
+        p1.addEventListener('click',function(e){
+            console.log('点击激活')
+        })
+        //正常点击行为的绑定
+
+        var link1 = document.getElementById('link1')
+        link1.addEventListener('click',function(e){
+            e.preventDefault()  //取消默认行为--取消链接跳转
+            console.log('点击链接')
+        })
+        //取消默认行为e.preventDefault使用方法
+
+        function bindEvent(elem,type,fn){
+            elem.addEventListener(type,fn)
+        }
+        var p4 = document.getElementById('p4')
+        bindEvent(p4,'click',function(e){
+            console.log('点击取消')
+        })
+        //通用事件绑定函数的写法
+    </script>
+    
+</body>
+</html>
