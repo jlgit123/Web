@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">激活</p>
+        <p id="p2">取消</p>
+        <a href="http://imooc.com" id="link1">imooc.com</a>
+        <a href="http://imooc.com" id="link2">imooc.com</a>
+        <a href="http://imooc.com" id="link3">imooc.com</a>
+        <a href="http://imooc.com" id="link4">imooc.com</a>
+    </div>
+
+    <script type="text/javascript">
+        function bindEvent(elem, type, selector, fn){
+            if(fn == null){  //支持三个参数，也支持四个参数（有没有代理都可以）
+                fn = selector
+                selector = null
+            }
+            elem.addEventListener(type, function(e){
+                if(selector){
+                    //代理
+                    target = e.target
+                    if (target.matches(selector)){   //选择器
+                        fn.call(target, e)  //修改this指向
+                    }
+                } else {
+                    //不是代理
+                    fn(e)
+                }
+            })
+        }
+
+        var div1 = document.getElementById('div1')
+        bindEvent(div1,'click','a',function(e){
+            e.preventDefault();
+            console.log(this.innerHTML)  //走代理，这里的this是target，也就是a标签
+        })
+
+        
+        var p1 = document.getElementById('p1')
+        var p2 = document.getElementById('p2')
+        bindEvent(p1,'click',function(e){
+            console.log(p1.innerHTML)  //不走代理
+        })
+        bindEvent(p2,'click',function(e){
+            console.log(p2.innerHTML)  //不走代理
+        })
+
+    
+    </script>
+</body>
+</html>
