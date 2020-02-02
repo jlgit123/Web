@@ -1,0 +1,22 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "webpack test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack"
+  },
+  "author": "18813089789@163.com",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "webpack-cli": "^3.3.10"
+  }
+}
