@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="list"></div>
+    <script type="text/javascript">
+    var listNode = document.getElementById('list')
+
+    //插入10个li标签
+    var frag = document.createDocumentFragment(); //创建一个片段
+    var x, li;
+    for(x = 0; x < 10; x++){
+        li = document.createElement("li");
+        li.innerHTML = "List item" + x;
+        frag.appendChild(li);
+    }
+    listNode.appendChild(frag); //合并插入
+    
+    </script>
+    
+</body>
+</html>
