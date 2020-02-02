@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+
+    <script type="text/javascript">
+    //未缓存DOM查询
+    var d1 = Date.now()
+    var i
+    for (i=0; i< document.getElementsByTagName('p').length; i++){
+        // console.log(i)
+        //todo
+        //每次循环都要进行DOM查询，10个p标签就要查询10次
+    }
+    var t1 = Date.now() - d1
+    console.log(t1)
+
+    
+    var d2 = Date.now()
+    //缓存DOM查询
+    var pList = document.getElementsByTagName('p')
+    var i
+    for (i=0; i< pList.length; i++){
+        // console.log("缓存"+i)
+        //todo
+        //只需要查询一次缓存起来，以后的循环中不需要再进行DOM查询，节省时间
+    }
+    
+    var t2 = Date.now() - d2
+    console.log(t2)
+    </script>
+</body>
+</html>
