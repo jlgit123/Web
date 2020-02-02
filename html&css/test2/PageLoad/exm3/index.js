@@ -1,0 +1,1 @@
+document.getElementById('container').innerHTML = 'update by js'
