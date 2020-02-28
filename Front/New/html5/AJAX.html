@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AJAX测试</title>
+
+    <script type="text/javascript">
+      var xhr;
+      function loadXMLDoc(url) {
+        xhr = null;
+        /*处理兼容性问题*/
+        if (window.XMLHttpRequest) {
+          // code for all new browsers
+          xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+          // code for IE5 and IE6
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        if (xhr != null) {
+          xhr.onreadystatechange = state_Change;
+          xhr.open("GET", url, true);
+          xhr.send(null);
+        } else {
+          alert("Your browser does not support XMLHTTP.");
+        }
+      }
+
+      function state_Change() {
+        if (xhr.readyState == 4) {
+          // 4 = "loaded"
+          if (xhr.status == 200) {
+            // 200 = OK
+            // ...our code here...
+          } else {
+            alert("Problem retrieving XML data");
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="sse">
+      <a href="javascript:WebSocketTest()">运行 手写AJAX</a>
+    </div>
+  </body>
+</html>

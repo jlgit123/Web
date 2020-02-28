@@ -34,6 +34,8 @@
             }
             .layout.float .center{
                 background-color: blue;
+                overflow: auto;  
+                /* BFC解决方案 */
             }
         </style>
         <article class="left-right-center">
@@ -270,6 +272,7 @@
                 background-color: blue;
             }
             /*在中间栏嵌套一个div*/
+
             .layout.shuangfeiyi .center .content{
                 margin:0 300px 0 300px;
             }
@@ -280,7 +283,9 @@
                 margin-left: -300px;
                 background-color: #ff69b4;
             }
-        
+            /* 如果把三栏布局比作一只大鸟，可以把center看成是鸟的身体，
+            left和right则是鸟的翅膀。这个布局的实现思路是，
+            先把最重要的身体部分放好，然后再将翅膀移动到适当的地方. */   
         </style>
         <article class="left-center-right">
             <div class="center">

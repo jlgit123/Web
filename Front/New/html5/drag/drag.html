@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>拖动小熊</title>
+    <style>
+        body{
+            margin:0;
+            position: relative;
+        }
+        img{
+            position:absolute;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+<h3>随着鼠标拖动而移动的小猫咪</h3>
+<img id="cat" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537438350926&di=d40ad5be9fac73fbcebfcbec85a88739&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D88c8f471f9039245a1e0e90bb2a488f4%2F9a504fc2d5628535aedbd09d95ef76c6a7ef6356.jpg" alt=""/>
+<script>
+    var cat = document.getElementById('cat');
+    cat.ondragstart = function(e){
+        console.log('cat开始移动');
+        offsetX = e.offsetX;
+        offsetY = e.offsetY;
+    };
+    cat.ondrag = function(e){
+        // console.log('事件源cat正在拖动中');
+        var x = e.pageX;
+        var y = e.pageY;
+        console.log(x + '-' +y);
+        if(x === 0 && y === 0){//不处理最后一刻x,y都为0 的情景
+            return
+        };
+        x -= offsetX;
+        y -= offsetY;
+        cat.style.left = x+ 'px';
+        cat.style.top = y + 'px';
+    }
+    cat.ondragend = function (e) {
+        console.log('cat源对象拖动结束')
+    }
+</script>
+</body>
+</html>
