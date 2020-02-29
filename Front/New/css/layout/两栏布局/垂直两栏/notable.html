@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面布局两栏垂直200+X</title>    
+
+    <style media="screen">
+        html *{
+            padding: 0;
+            margin: 0;
+        } 
+        
+        .layout{
+            margin-left:100px;
+        }
+        .layout article div{     
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 表格布局解决方案 -->
+    <section class="layout table">
+        <style>
+            .layout.table .top-center{
+                height: 100%;
+                display: table;
+                width: 100px;
+            }
+            .layout.table .top-center>div{
+                display: table-cell;
+            }
+            .layout.table .top{
+                height: 200px;
+                background-color:red;
+                vertical-align: middle;
+            }
+            .layout.table .center{
+                background-color: blue;
+                vertical-align: middle;
+            }
+        </style>
+        <article class="top-center">
+            <div class="top"></div>
+            <div class="center">
+                <h2>表格布局解决方案</h2>
+                4.这是表格布局方案中间部分
+            </div>
+        </article>
+    </section>
+
+
+</body>
+</html>

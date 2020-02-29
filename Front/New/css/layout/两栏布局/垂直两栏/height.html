@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面布局两栏垂直200+X</title>    
+
+    <style media="screen">
+        html *{
+            padding: 0;
+            margin: 0;
+        } 
+        
+        .layout{
+            margin-left:100px;
+        }
+        .layout article div{     
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- height计算解决方案 -->
+    <section class="layout layout height">
+        <style media="screen">
+            .layout.height .top{
+                background-color:red;
+                height: 200px;
+            }
+            .layout.height .center{
+                background-color: blue;
+                height: calc(100%-200px);
+                /* BFC解决方案 */
+            }
+        </style>
+        <article class="top-center">
+            <div class="top"></div>
+            <div class="center">
+                <h1>高度计算解决方案</h1>
+                1.这是两栏布局高度计算方案自适应部分
+                2.注意设置height: calc(100%-200px);
+
+            </div>
+        </article>
+    </section>
+</body>
+</html>

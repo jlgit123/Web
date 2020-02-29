@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面布局两栏垂直200+X</title>    
+
+    <style media="screen">
+        html *{
+            padding: 0;
+            margin: 0;
+        } 
+        
+        .layout{
+            margin-left:100px;
+        }
+        .layout article div{     
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- absolute解决方案 -->
+    <section class="layout absolute">
+        <style>
+            .layout.absolute .top-center>div{
+                position: absolute;
+                left: 500px;
+            }
+            .layout.absolute .top{
+                top: 0;
+                height: 200px;
+                background-color:red;
+            }
+            .layout.absolute .center{
+                top: 200px;
+                background-color: yellow;
+                bottom: 0px;
+            }
+        </style>
+        <article class="top-center">
+            <div class="top"></div>
+            <div class="center">
+                <h2>绝对定位解决方案</h2>
+                2.这是两栏布局绝对定位方案自适应部分
+
+            </div>
+        </article>
+    </section>
+</body>
+</html>

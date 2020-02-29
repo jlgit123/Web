@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面布局两栏垂直200+X</title>    
+
+    <style media="screen">
+        html *{
+            padding: 0;
+            margin: 0;
+        } 
+        
+        .layout{
+            margin-left:100px;
+        }
+        .layout article div{     
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 网格布局解决方案 -->
+    <section class="layout grid">
+        <style media="screen">
+            .layout.grid .top-center{
+                display: grid;
+                height: 100%;
+                grid-template-rows: 200px auto; 
+                /* 行高 */
+                grid-template-columns: 100px ;
+                /* 列宽 */
+            }
+
+            .layout.grid .top{
+                background-color: red;
+            }
+
+            .layout.grid .center{
+                background-color: yellow;
+            }
+        </style>
+        <article class="top-center">
+            <div class="top"></div>
+            <div class="center">
+                <h2>网格布局解决方案</h2>
+                5.这是两栏布局网格布局解决方案
+
+            </div>
+        </article>
+    </section>
+
+</body>
+</html>

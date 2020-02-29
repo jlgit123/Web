@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面布局两栏垂直200+X</title>    
+
+    <style media="screen">
+        html *{
+            padding: 0;
+            margin: 0;
+        } 
+        
+        .layout{
+            margin-left:100px;
+        }
+        .layout article div{     
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- flexbox解决方案 -->
+    <section class="layout flexbox">
+        <style>
+
+            .layout.flexbox{
+                margin-left: 670px;
+            }    
+            .layout.flexbox .top-center{
+                display: flex;
+                flex-direction:column;
+            }
+            .layout.flexbox .top{
+                height: 200px;
+                background-color: red;
+            }
+
+            .layout.flexbox .center{
+                flex:1;
+                background-color: yellow;
+            }
+        </style>
+        <article class="top-center">
+            <div class="top"></div>
+            <div class="center">
+                <h2>flexbox解决方案</h2>
+                3.这是两栏布局flexbox方案中间部分
+                <p>增加高度</p>
+                <p>增加高度</p>
+                <p>增加高度</p>
+                <p>增加高度</p>
+                <p>增加高度</p>
+                <p>增加高度</p>
+            </div>
+        </article>
+    </section>
+
+
+</body>
+</html>
