@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <a href="http://imooc.com" id="link1">我是1号</a>
+        <a href="http://imooc.com" id="link2">我是2号</a>
+        <a href="http://imooc.com" id="link3">我是3号</a>
+        <a href="http://imooc.com" id="link4">我是4号</a>
+    </div>
+    <script type="text/javascript">
+        function bindEvent(elem,type,fn){
+            elem.addEventListener(type,fn)
+        }
+
+        var div1 = document.getElementById('div1')
+        bindEvent(div1,'click',function(e){
+            e.preventDefault();
+            var target = e.target
+            if (target.nodeName==="A"){
+                alert(target.innerHTML)
+            }
+        })
+    </script>
+    
+</body>
+</html>

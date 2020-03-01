@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js运行机制</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // //js运行机制1
+        // console.log(1); //同步任务
+        // setTimeout(function(){ //异步任务
+        //     console.log(2);
+        // },0);
+        // console.log(3);  
+
+        // //js运行机制2
+        // console.log('A');
+        // while(1){
+        // }
+        // console.log('B');
+
+        // //js运行机制3
+        // console.log('A');
+        // setTimeout(function(){
+        //     console.log('B');
+        // },0);
+        // while(1){
+        // }
+
+        //js运行机制4
+        for(var i=0;i<4;i++){
+            setTimeout(function(){
+                console.log(i);
+            },1000);
+        }
+    </script>
+</body>
+</html>

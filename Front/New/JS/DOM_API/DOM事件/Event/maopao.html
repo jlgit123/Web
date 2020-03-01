@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">激活</p>
+        <p id="p2">取消</p>
+    </div>
+    <div id="div2">
+        <p id="p3">取消</p>
+        <p id="p4">取消</p>
+    </div>
+
+    <script type="text/javascript">
+        console.log('点激活只弹出激活，点三个取消都弹出取消')
+
+        function bindEvent(elem,type,fn){
+            elem.addEventListener(type,fn)
+        }
+
+        var p1 = document.getElementById('p1') //激活
+        bindEvent(p1,'click',function(e){
+            e.stopPropagation(); //阻止冒泡
+            alert('激活')
+        })
+
+        var body = document.body
+        bindEvent(body,'click',function(e){
+            alert('取消')
+        })
+
+
+    </script>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" class="class-div1">
+        <p id="p1" data-name="p1-data-name">this is p1</p>
+        <p id="p2">this is p2</p>
+    </div>
+    <div id="div2">
+        <p id="p3">this is p3</p>
+        <p id="p4">this is p4</p>
+    </div>
+
+    <script type="text/javascript">
+        console.log('以下是Property属性')
+        var div1 = document.getElementById('div1')
+        console.log('修改前的div1.className:',div1.className)
+        div1.className = 'abc'
+        console.log('修改后的div1.className:',div1.className)
+
+        var divList = document.getElementsByTagName('div')
+        console.log(divList)
+        console.log('长度：'+divList.length)
+        console.log(divList[0])
+        console.log(divList[1])
+
+        var pList = document.querySelectorAll('p')
+        console.log(pList)
+
+        //以上是property属性，作为js属性的一个赋值
+        /*----------------------------------------------*/
+
+        console.log('以下是Attribute属性')
+        var p1 = document.getElementById('p1')
+        console.log("修改前的p1.getAttribute('data-name'):",p1.getAttribute('data-name'))
+        p1.setAttribute('data-name','xyz')  //Elements已经修改
+        console.log("修改后的p1.getAttribute('data-name'):",p1.getAttribute('data-name'))
+        //以上是attribute属性，是标签属性
+    </script>
+</body>
+</html>

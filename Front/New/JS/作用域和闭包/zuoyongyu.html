@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //无块级作用域的例子
+        if (true) {
+            var name = 'zhangsan'
+        }
+        console.log(name)  //zhangsan
+        //写法一
+        //↓↓↓在块内声明和在块外声明的结果一样，但是可读性不同
+        var name
+        if (true) {
+            name = 'zhangsan'
+        }
+        console.log(name)  //zhangsan
+        //写法二 
+        //推荐写法二，可读性更好，在块{}的外面声明，在块内定义
+        /*----------------------------------------------*/
+        var a = 100  //全局
+        function fn(){
+            var b = 200
+            console.log(a)  //自由变量，到父级作用域--全局作用域去找
+            console.log(b)  //函数作用域
+        }        
+        fn() 
+        //推荐：函数中尽量不要使用全局作用域的变量，因为在外面再次改变该变量时，函数会受到污染
+        /*----------------------------------------------*/
+        var s = 100
+        function fn(){
+            var s = 200
+            console.log('fn',s)
+        }
+        console.log('global',s)
+        fn()
+
+        var x = 100
+        function F1(){
+            var y = 200
+            function F2(){
+                var z = 300
+                console.log(x)  //F2->F1->全局
+                console.log(y)  //F2->F1
+                console.log(z)  //F2
+                //哪个作用域定义了这个函数，这个函数的父级作用域就是它，与函数执行无关
+            } 
+            F2()
+        }
+        F1()  // 100 200 300
+        //函数的父级作用域是函数定义时的父级而非执行时的
+        //作用域链:一个自由变量，一直不断往父级作用域去找，形成链式结构
+        /*----------------------------------------------*/
+
+        function Fun1(){
+            var a = 111
+            // 返回一个函数（函数作为返回值）
+            return function(){
+                console.log(a)  //定义时是在Fun1这个父级作用域
+            }
+        }
+        //f1得到一个函数
+        var f1 = Fun1()  //执行时是在全局这个父级作用域
+        var a = 222
+        f1() //111
+        //这里 函数执行时的父级作用域是全局，而定义时的父级作用域是Fun1
+        //但是只有定义时的父级作用域生效，故a=111
+        //以上就是一个闭包的使用场景1：函数作为返回值
+        /*----------------------------------------------*/
+
+        var f0 = Fun1()  //被作为参数传递的函数
+
+        function Fun2(fn){ 
+            var a = 222   
+            fn()    //执行的父级作用域是Fun2，但是定义时的父级作用域依旧是Fun1
+        }
+        Fun2(f1)  //111
+        //以上就是一个闭包的使用场景2：函数作为参数来传递
+        /*----------------------------------------------*/
+
+        //实际开发中闭包的应用
+        function isFirstLoad(){
+            var _list = []   //变量封装，只在函数内部
+            return function(id) {  
+                if (_list.indexOf(id) >=0){  //如果有这个id
+                    return false
+                } else {  //如果没有这个id
+                    _list.push(id)  
+                    return true
+                }
+            }
+        }
+
+        //使用
+        var firstLoad = isFirstLoad()
+        firstLoad(10)  //true
+        firstLoad(10)  //false
+        firstLoad(20)  //true
+        //如果不用闭包，就需要定义一个暴露的数组来记录加载的每个数，容易被篡改
+        //在 isFirstLoad 函数外面，根本不可能修改 _list 的值（保密性好）
+        //☆闭包实际应用中主要用于封装变量、收敛权限    
+        /*----------------------------------------------*/
+    </script>
+</body>
+</html>
