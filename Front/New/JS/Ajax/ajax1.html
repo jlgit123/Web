@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //写一个ajax
+        var xhr = new XMLHttpRequest
+        xhr.open('GET','http://1.shiquanshimei.applinzi.com/test/new.php',false)
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState === 4){
+                if(xhr.status === 200){
+                    alert(xhr.responseText)
+                }
+            }
+        }
+        xhr.send(null)
+        //使用XMLHttpRequest这个最底层最核心的api实现ajax，不依赖第三方库
+
+        //状态码说明
+        //readyState 
+        //0-未初始化，还没有调用send()方法 
+        //1-载入，已调用send()方法，正在发送请求  
+        //2-载入完成，send()方法执行成功，已经接收到全部响应内容 
+        //3-交互，正在解析响应内容
+        //4-完成，响应内容解析完成，可以在客户端调用了
+
+        //status 2xx 3xx 4xx 5xx
+        //2xx 表示成功处理请求，如200
+        //3xx 需要重定向，浏览器直接跳转
+        //4xx 客户端请求错误，如404
+        //5xx 服务器端错误
+        
+        //跨域
+        //可以跨域的三个标签 <img> <link> <script>
+        //跨域解决方法：1.JSONP  2.服务器设置http头部
+
+    </script>
+</body>
+</html>

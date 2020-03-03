@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p>deferred test</p>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        
+        // var wait = function () {
+        //     var task = function () {
+        //         console.log('执行完成')//后面再加代码很复杂
+        //     }
+        //     setTimeout(task, 2000)
+        // }
+        // wait()  //2秒之后打印执行完成
+
+        // 已经封装好的（A 员工）
+        function waitHandle() {
+            // 定义
+            var dtd = $.Deferred()
+            var wait = function (dtd) {  //接收dtd
+                var task = function () {
+                    console.log('执行完成')
+                    // 成功
+                    dtd.resolve()
+                    // 失败
+                    // dtd.reject()
+                }
+                setTimeout(task, 1000)
+                // wait 返回
+                // return dtd  //----版本【1】
+                return dtd.promise()  //----版本【2】 
+                //注意，这里返回的是promise对象而不是deffered对象
+
+            }
+            // 最终返回
+            return wait(dtd)
+        }
+
+        // 使用（B 员工不老实，不规范）
+        var w = waitHandle()  // promise 对象，不再包括reject对象
+        // w.reject()               //----版本【1】扩展，不推荐
+        // w.then(function () {     //----版本【1】
+        $.when(w).then(function () {  //----版本【2】promise对象需要再封装一下才能调用.then
+            console.log('ok 1')
+        }, function () {
+            console.log('err 1')
+        })
+
+    </script>
+</body>
+</html>
