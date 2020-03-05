@@ -9,26 +9,27 @@
     <p>模拟</p>
 
     <script type="text/javascript">
+
+        /*1.definePropert的基本使用之如何监听变化*/
         // var obj = {
         //     name: 'zhangsan',
         //     age: 25
         // }
-        // console.log(obj)
+        // console.log(obj)  //访问设置都成功，但是都无法监听到
+        //因为name和age属性都是静态属性 值类型，没有逻辑
 
         // var obj = {}
-        // var _name = 'shangsan'
-        // Object.defineProperty(obj, 'name', {
-        //     get: function () {
+        // var _name = 'shangsan' //内部使用_变量
+        // Object.defineProperty(obj, 'name', { //name是obj的属性名
+        //     get: function () {  //获取
         //         console.log('get', _name) // 监听
         //         return _name
         //     },
-        //     set: function (newVal) {
+        //     set: function (newVal) {  //赋新值
         //         console.log('set', newVal)  // 监听
         //         _name = newVal
         //     }
         // })
-
-
 
 
         // var vm = new Vue({
@@ -39,6 +40,7 @@
         //     }
         // })
 
+        /* 2.definePropert之如何把data属性变化代理到vm上*/
         var vm = {}
         var data = {
             name: 'zhangsan',
@@ -47,6 +49,7 @@
 
         var key, value
         for (key in data) {
+            //命中闭包，新建一个函数，保证key的独立作用域
             (function (key) {
                 Object.defineProperty(vm, key, {
                     get: function () {

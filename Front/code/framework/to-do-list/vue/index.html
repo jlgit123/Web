@@ -35,8 +35,15 @@
                 }
             }
         })
-
+        //如何找到以上模板对应的render函数呢?
+        //源码中找code.render，然后打印或alert
         /*
+
+        //vue2.0开始支持预编译
+        //开发环境下写模板
+        //编译打包
+        //生产环境下就是JS（即生成的render函数）
+        //因此无需关心render怎么生成的，只需了解模板和render函数的对应关系
         
         with(this){  // this 就是 vm
             return _c(
@@ -50,22 +57,23 @@
                         [
                             _c(
                                 'input',
-                                {
-                                    directives:[
+                                {  //directives和domProps是get；on是set
+                                    directives:[  //指令v-model 【双向数据绑定】 
                                         {
                                             name:"model",
                                             rawName:"v-model",
-                                            value:(title),
+                                            value:(title),  //【js中对title改动响应到页面】
                                             expression:"title"
                                         }
                                     ],
                                     domProps:{
                                         "value":(title)
                                     },
-                                    on:{
-                                        "input":function($event){
+                                    on:{    //事件绑定【页面上input数据有改动】
+                                        "input":function($event){ 
                                             if($event.target.composing)return;
                                             title=$event.target.value
+                                            //data的title赋值成input的value
                                         }
                                     }
                                 }
@@ -75,19 +83,21 @@
                                 'button',
                                 {
                                     on:{
-                                        "click":add
+                                        "click":add  //vm.add(methods的add也代理到vm上)
                                     }
                                 },
                                 [_v("submit")]
                             )
                         ]
                     ),
-                    _v(" "),
+                    _v(" "),//空的字符串连接
                     _c('div',
                         [
                             _c(
                                 'ul',
                                 _l((list),function(item){return _c('li',[_v(_s(item))])})
+                                //_l函数创建子元素（返回数组）
+                                //遍历list的item值，每个list元素都创建一个'li'标签
                             )
                         ]
                     )

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="./vue-2.5.13.js"></script>
+    
 </head>
 <body>
     <div id="app">
         <p>{{price}}</p>
     </div>
-
+    <script src="./vue-2.5.13.js"></script>
     <script>
         var vm = new Vue({
             el: '#app',
@@ -28,6 +28,7 @@
                     },
                     [
                         _c('p', [_v(_s(price))])
+                        //price 即 this.price 即 vm.price，即 data 中的 price
                     ]
                 )
             }
@@ -44,7 +45,8 @@
                 ]
             )
         }
-
+        //vm._c 创建DOM标签   vm._v创建文本标签   vm._s toString
+        //vm.price 100
     </script>
 </body>
 </html>
