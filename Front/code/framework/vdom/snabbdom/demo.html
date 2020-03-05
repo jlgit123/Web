@@ -17,7 +17,7 @@
     <script type="text/javascript">
         var snabbdom = window.snabbdom
 
-        // 定义 patch
+        // 定义 patch函数
         var patch = snabbdom.init([
             snabbdom_class,
             snabbdom_props,
@@ -25,14 +25,14 @@
             snabbdom_eventlisteners
         ])
 
-        // 定义 h
+        // 定义 h函数
         var h = snabbdom.h
 
         var container = document.getElementById('container')
 
         // 生成 vnode
         var vnode = h('ul#list', {}, [
-            h('li.item', {}, 'Item 1'),
+            h('li.item', {}, 'Item 1'),//li标签，class为item，没有属性，内容Item 1
             h('li.item', {}, 'Item 2')
         ])
         patch(container, vnode)
@@ -40,13 +40,13 @@
         document.getElementById('btn-change').addEventListener('click', function () {
             // 生成 newVnode
             var newVnode = h('ul#list', {}, [
-                h('li.item', {}, 'Item 1'),
+                h('li.item', {}, 'Item 1'),  
                 h('li.item', {}, 'Item B'),
                 h('li.item', {}, 'Item 3')
             ])
-            patch(vnode, newVnode)
+            patch(vnode, newVnode)  //newVnode和vnode做对比，找出差异渲染
         })
-
+        //页面只看到ItemB和Item3闪烁
     </script>
     
 </body>

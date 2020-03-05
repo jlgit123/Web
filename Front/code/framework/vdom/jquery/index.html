@@ -37,13 +37,13 @@
 
             // 拼接 table
             var $table = $('<table>')
-
+            // $container.append($table)  //之后每次append都会渲染一次
             $table.append($('<tr><td>name</td><td>age</td><td>address</td>/tr>'))
             data.forEach(function (item) {
                 $table.append($('<tr><td>' + item.name + '</td><td>' + item.age + '</td><td>' + item.address + '</td>/tr>'))
             })
 
-            // 渲染到页面
+            // 渲染到页面（只渲染一次，因此是jquery的性能最佳方式）
             $container.append($table)
         }
 

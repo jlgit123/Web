@@ -21,20 +21,17 @@
         // 已经封装好的（A 员工）
         function waitHandle() {
             // 定义
-            var dtd = $.Deferred()
-            var wait = function (dtd) {  //接收dtd
+            var dtd = $.Deferred() //创建一个Deferred对象
+            var wait = function (dtd) {  //----版本【1】要求传入一个一个Deferred对象
                 var task = function () {
                     console.log('执行完成')
-                    // 成功
-                    dtd.resolve()
-                    // 失败
-                    // dtd.reject()
+                    dtd.resolve() // 成功
+                    // dtd.reject() // 失败或出错
                 }
                 setTimeout(task, 1000)
                 // wait 返回
-                // return dtd  //----版本【1】
-                return dtd.promise()  //----版本【2】 
-                //注意，这里返回的是promise对象而不是deffered对象
+                // return dtd  //----版本【1】返回一个Deferred对象
+                return dtd.promise()  //----版本【2】注意，这里返回的是promise对象而不是deffered对象
 
             }
             // 最终返回
@@ -42,7 +39,7 @@
         }
 
         // 使用（B 员工不老实，不规范）
-        var w = waitHandle()  // promise 对象，不再包括reject对象
+        var w = waitHandle()  // ----版本【2】promise 对象，不再包括reject对象
         // w.reject()               //----版本【1】扩展，不推荐
         // w.then(function () {     //----版本【1】
         $.when(w).then(function () {  //----版本【2】promise对象需要再封装一下才能调用.then

@@ -29,38 +29,39 @@
 // })
 // //如果我还想打印图片高度呢?
 
-import 'babel-polyfill'
 // 2. Promise 语法 
-function loadImg(src) {
-    var promise = new Promise(function (resolve, reject) {
-        var img = document.createElement('img')
-        img.onload = function () {
-            resolve(img)
-        }
-        img.onerror = function () {
-            reject('图片加载失败')
-        }
-        img.src = src
-    })
-    return promise
-}
+// function loadImg(src) {
+//     var promise = new Promise(function (resolve, reject) {
+//         var img = document.createElement('img')
+//         img.onload = function () {
+//             resolve(img)
+//         }
+//         img.onerror = function () {
+//             reject('图片加载失败')
+//         }
+//         img.src = src
+//     })
+//     return promise
+// }
 
-var src = 'https://www.imooc.com/static/img/index/logo_new.png'
-var result = loadImg(src)
+// var src = 'https://www.imooc.com/static/img/index/logo_new.png'
+// var result = loadImg(src)
 
-result.then(function(img){
-    console.log(img.width)
-},function(){
-    console.log('failed')
-})
+// result.then(function(img){
+//     console.log(img.width)
+// },function(){
+//     console.log('failed')
+// })
 
-result.then(function(img){
-    console.log(img.height)  //继续打印
-})
-
-
+// result.then(function(img){
+//     console.log(img.height)  //继续打印
+// })
 
 
+
+// 4-25 async-await代码示例
+
+import 'babel-polyfill'
 function loadImg(src) {
     var promise = new Promise(function (resolve, reject) {
         var img = document.createElement('img')

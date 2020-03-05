@@ -5,7 +5,7 @@ function updateChildren(vnode, newVnode) {
     children.forEach(function (childVnode, index) {
         var newChildVnode = newChildren[index]
         if (childVnode.tag === newChildVnode.tag) {
-            // 深层次对比，递归
+            // 深层次对比，递归（递归根源，无限循环）
             updateChildren(childVnode, newChildVnode)
         } else {
             // 替换
