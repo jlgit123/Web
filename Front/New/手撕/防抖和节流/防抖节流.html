@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height: 5000px;">
+    <script>
+        //处理函数
+        const handle = ()=>{
+            console.log(Math.random())
+        }
+        //防抖之前
+        // window.addEventListener('scroll',handle)
+
+        //debouce--定时器实现防抖(回调函数比作电梯启动事件)
+        const debouce = (fn,delay)=>{
+            let timeout = null 
+            return function(){
+                clearTimeout(timeout)
+                timeout=setTimeout(fn,delay)
+            }
+        }
+        // window.addEventListener('scroll',debouce(handle,1000))
+
+        //throttle 时间戳实现(一个单位时间内，即使你连续按了很多次按钮，也只有一次被触发)
+        const throttle = (fn,delay)=>{
+            let lastTime = 0 //上一次触发的时间
+            return function(){
+                let nowTime = Date.now()
+                if (nowTime-lastTime>delay){
+                    fn.apply(this)
+                    lastTime = nowTime //记得要重新赋值
+                }
+            }
+        }
+        window.addEventListener('scroll',throttle(handle,1000))
+
+    </script>
+</body>
+</html>
