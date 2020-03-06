@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img id="img1" src="preview.png" data-realsrc="src.png" />
+    <script type="text/javascript">
+        var img1 = document.getElementById('img1')
+        img1.src = img1.getAttribute('data-realsrc')
+        //渲染时先加载一个小图片，再通过js的方式加载原图
+        //下拉加载更多图片也是懒加载的方式
+    </script>
+</body>
+</html>

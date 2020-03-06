@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>错误监控</title>
+    <script type="text/javascript">
+        window.addEventListener('error',function(e){
+            console.log('捕获',e);
+        },true);  //捕获√
+        window.addEventListener('error',function(e){
+            console.log('冒泡',e);
+        },false);  //冒泡×
+    </script>
+</head>
+<body>
+    <script src="//baidu.cm/test.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        // (new Image()).src='http://baidu.com/tesjk?r=tksjk'; //一行代码实现资源上报
+    </script>
+</body>
+</html>
