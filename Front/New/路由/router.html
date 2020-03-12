@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>单页面SPA应用路由原理</title>
+        <style type="text/css">
+            .api,
+            .hash {
+                color: blue;
+                display: block;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a class='api a'>a.html</a>
+        <a class='api b'>b.html</a>
+        <p>
+        </p>
+        <a class='hash a'>#a.html</a>
+        <a class='hash b'>#b.html</a>
+        <script type="text/javascript">
+            // 注册路由
+            // 说明:document.querySelectorAll('.api') 返回的是类数组对象NodeList,这个NodeList可以使用数组的方法forEach
+            // NodeList只有数组的forEach方法,其他方法map/filter等方法没有
+            document.querySelectorAll('.api').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    // 阻止默认事件
+                    e.preventDefault();
+                    let link = item.textContent;
+                    // pushState有3个参数,第一个参数是跳转url的状态信息,第二个参数是页面标题,第三个参数是跳转链接
+                    // 
+                    window.history.pushState({
+                            name: 'api'
+                        },
+                        '页面标题',
+                        link
+                    )
+                }, false) // false 表示冒泡阶段执行
+            });
+            // 监听路由
+            // popstate 属于window事件
+            window.addEventListener('popstate', (e) => {
+                console.log({
+                    location: location.href,
+                    state: e.state
+                })
+            })
+
+            /*分隔符 上面是history  下面是hash**/
+            // 注册路由
+            document.querySelectorAll('.hash').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    let link = item.textContent;
+                    window.location.hash = link
+                }, false)
+            });
+            // 监听路由
+            // hashchange 属于window事件
+            window.addEventListener('hashchange', (e) => {
+                console.log({
+                    location: location.href,
+                    state: e.state
+                })
+            })
+　　　　　　// hash改变的方法：
+　　　　　　// window.location.assign('#a')
+　　　　　　// window.location.replace('#b')
+
+        </script>
+    </body>
+
+</html>
