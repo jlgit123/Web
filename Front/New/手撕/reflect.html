@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>请输入内容：<input id="input" type="text"></h1>
+    <h1>您输入的是<span id="txt"></span></h1>
+    <script type="text/javascript">
+        //1.获取dom元素
+        const inputObj = document.getElementById('input')
+        const txtObj =document.getElementById('txt')
+    
+        //2.初始化代理对象
+        const obj = {}
+
+        //3.添加代理，配置代理选项
+        let ObjProxy = new Proxy(obj, {
+            get(target,key){
+                return Reflect.get(target,key)
+            },
+            set(target,key,value){
+                if(key === "text"){
+                    //更改inputObj时，txtObj作出响应
+                    inputObj.value = inputObj.value === value? inputObj.value:value
+                    txtObj.innerHTML = value
+                }
+                return Reflect.set(target,key,value)
+            }
+        })
+        
+        //4.给input添加键盘键入事件
+        inputObj.addEventListener('keyup',function(e){
+            ObjProxy.text = e.target.value
+            console.log(ObjProxy)
+        })
+        ObjProxy.text = '124'
+
+    </script>
+</body>
+</html>
