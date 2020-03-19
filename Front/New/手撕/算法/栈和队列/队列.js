@@ -25,12 +25,12 @@ class Queue{
     }
 }
 
-let s = new Queue();
-s.is_empty()
-s.size()
-s.enqueue(1)
-s.enqueue(2)
-s.dequeue()
-s.dequeue()
-s.is_empty()
-s.size()
+let q = new Queue();
+q.is_empty()
+q.size()
+q.enqueue(1)
+q.enqueue(2)
+q.dequeue()
+q.dequeue()
+q.is_empty()
+q.size()

@@ -45,7 +45,7 @@ function BinarySearch(array, t){
 // ☆☆所以时间复杂度f(n)=O(logn)  
 function RecursiveBinarySearch(array,t,left,right){
     if(left<=right){   //O(1)
-        var mid = parseInt((left+right) /2)  // O(1)  parseInt防止出现小数直接true
+        let mid = parseInt((left+right) /2)  // O(1)  parseInt防止出现小数直接true
         if (array[mid]<t){
             return RecursiveBinarySearch(array,t,mid+1,right) //f(n/2)
         } else if (array[mid]>t){
@@ -56,7 +56,7 @@ function RecursiveBinarySearch(array,t,left,right){
     }
     return false
 }
-// console.log(RecursiveBinarySearch(ary,100000000,0,ary.length-1))
+console.log(RecursiveBinarySearch(ary,99999999,0,ary.length-1))
 
 
 

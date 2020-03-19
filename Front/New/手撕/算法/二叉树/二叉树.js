@@ -25,7 +25,7 @@ function preOrder(root){
         preOrder(root.right);
     }
 }
-// preOrder(root)
+preOrder(root)
 
 //中序遍历 1.中序遍历左子树 2.遍历根节点 3.中序遍历右子树
 function inOrder(root){
@@ -45,28 +45,7 @@ function postOrder(root){
         console.log(root.val)
     }
 }
-postOrder(root)
+// postOrder(root)
 
 
 
-//扩展，不需掌握
-let preorder = "ABCDEFG";
-let inorder = "CDBAEGF";
-function buildTree(preorder,inorder){
-    if(preorder.length === 0){
-        return null;
-    } 
-    if(preorder.length === 1){
-        return new TreeNode(preorder[0]);
-    } 
-    let root = new TreeNode(preorder[0])
-    let idx = inorder.indexOf(root.val);
-    root.left = buildTree(preorder.slice(1,idx+1),
-                            inorder.slice(0,idx));
-    root.right = buildTree(preorder.slice(idx+1,preorder.length),
-                            inorder.slice(idx+1,inorder.length));
-    return root;
-}
-let root1 = buildTree(preorder,inorder)
-preOrder(root1)
-inOrder(root1)

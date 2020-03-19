@@ -47,12 +47,12 @@ class QueueByTwoStacks{
         if(this.stack1.size()===1){    //额外的场景！！
             return this.stack1.pop();
         }
-        for (let i=0;i<=this.stack1.size()-1;i++){
+        for (let i=0;i<this.stack1.size();i++){
             let value = this.stack1.pop();
             this.stack2.push(value);
         }
         let res = this.stack1.pop();
-        for (let j=0;j<=this.stack2.size();j++){  
+        for (let i=0;i<=this.stack2.size();i++){  
             let value = this.stack2.pop();;
             this.stack1.push(value);
         }

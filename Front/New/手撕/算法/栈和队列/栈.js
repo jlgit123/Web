@@ -35,10 +35,10 @@ class stack{
 }
 
 let s = new stack();
-// s.push(1)
-// s.push(2)
-// s.peak()
-// s.pop()
-// s.pop()
-// s.is_empty()
-// s.size()
+s.push(1)
+s.push(2)
+s.peak()
+s.pop()
+s.pop()
+s.is_empty()
+s.size()

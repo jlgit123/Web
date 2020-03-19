@@ -41,4 +41,4 @@ function inOrder(root){
     }
 }
 
-inOrder(root)
+console.log(inOrder(root))

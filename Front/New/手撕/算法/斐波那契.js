@@ -27,10 +27,8 @@ function f(n){
         throw "n is not a number!";
     }
 
-    if ( n===1 ){  //O(1)
+    if ( n===0 || n===1 ){  //O(1)
         return 1   //O(1)
-    } else if( n ===2){  //O(1)
-        return 2   //O(1)
     } else {
         return f(n-1) + f(n-2)  //F(n-1)+F(n-2)
     }
@@ -43,10 +41,10 @@ console.log('方法一',t1-t0)
 /**优化之方法二：数组存结果 */
 // O(1+1+n-2+1)=O(n+1)=O(n) 又叫线性时间复杂度
 function f2(n){
-    let ary = new Array(n+1).fill(0)
+    let ary = new Array(n)
+    ary[0] = 1;  //O(1)
     ary[1] = 1;  //O(1)
-    ary[2] = 2;  //O(1)
-    for (let i=3;i<n+1;i++){   //O(n-2)
+    for (let i=2;i<n+1;i++){   //O(n-2)
         ary[i]=ary[i-1]+ary[i-2]  //O(1)
     }  
     return ary[n];
@@ -55,6 +53,22 @@ function f2(n){
 console.log(f2(100)) //89
 t2 = d.getTime()
 console.log('方法二',t2-t1)
+
+
+
+function Fib(n) {
+    let a =1 ,b =1;
+    let arr = [a,b]
+    while (arr.length < n+1) {
+        [a,b] = [b,a+b]; //es6的解构
+        arr.push(b);
+    }
+    return arr[n];
+}
+
+console.log(Fib(100)) //89
+t22 = d.getTime()
+console.log('方法二',t22-t2)
 
 
 /**优化之方法三：递归 对象保存结果 */
@@ -69,8 +83,8 @@ function f3(n){
 }
     
 function _fib(n){
-    if(n===1||n===2){
-        return n
+    if(n===0||n===1){
+        return 1
     } else {
         return f3(n-1)+f3(n-2)
     }
@@ -78,4 +92,4 @@ function _fib(n){
 
 console.log(f3(100))
 t3 = d.getTime()
-console.log('方法三',t3-t2)
+console.log('方法三',t3-t22)
