@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    jsonp('http://baidu.com/index.html', { id: 34 }, 'myCallback')
+    jsonp('http://baidu.com/index.html?name="zjn"', { id: 34 }, 'myCallback')
+    function myCallback(data) {
+        console.log(data)
+    }
+
+    //手写实现jsonp，传入url,data和callback函数
+    function jsonp(url, data, callback){
+        if (callback == null){ //边界条件，不存在参数data
+            callback = data;
+            data = {};
+        }
+        //拼接url
+        url += (url.indexOf('?')===-1)? '?':'&' ;
+        url += "callback=" + callback;  //先拼接回调函数
+        let params = '';
+        for(let i in data){
+            params += '&' + i + '=' + data[i]
+        }
+        url += params
+        
+        // 创建并插入script标签
+        let script = document.createElement('script');
+        script.setAttribute('src',url);
+        document.querySelector('head').appendChild(script)
+    }
+</script>
+</body>
+</html>

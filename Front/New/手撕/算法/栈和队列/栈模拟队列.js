@@ -48,13 +48,11 @@ class QueueByTwoStacks{
             return this.stack1.pop();
         }
         for (let i=0;i<this.stack1.size();i++){
-            let value = this.stack1.pop();
-            this.stack2.push(value);
+            this.stack2.push(this.stack1.pop());
         }
         let res = this.stack1.pop();
         for (let i=0;i<=this.stack2.size();i++){  
-            let value = this.stack2.pop();;
-            this.stack1.push(value);
+            this.stack1.push(this.stack2.pop());
         }
         return res;
     }
