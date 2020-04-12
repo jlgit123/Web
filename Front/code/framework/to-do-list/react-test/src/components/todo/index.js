@@ -16,7 +16,7 @@ import List from './list/index.js'
 
 class Todo extends Component {
     constructor(props) {
-        super(props)
+        super(props)  //把props传递到父类
         this.state = {
             list: ['a', 'b']
         }
